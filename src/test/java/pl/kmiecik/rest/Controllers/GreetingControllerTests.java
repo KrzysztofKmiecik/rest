@@ -3,9 +3,12 @@ package pl.kmiecik.rest.Controllers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import pl.kmiecik.rest.Service.GreetingService;
 
 import static org.hamcrest.Matchers.containsString;
@@ -17,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+//@WebMvcTest(GreetingController.class)
 class GreetingControllerTests {
 
     @Autowired
@@ -27,7 +31,7 @@ class GreetingControllerTests {
 
     @Test
     void shouldReturnDefaultMessage() throws Exception {
-        when(greetingService.greet()).thenReturn("Hello");
+        when(greetingService.greet()).thenReturn("Hello World");
 
         this.mockMvc.perform(get("/"))
                 .andDo(print())
